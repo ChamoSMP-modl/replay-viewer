@@ -52,7 +52,7 @@
     "vitest": "^5.1.0"
   },
   "publishConfig": {
-    "registry": "https://nexus.modl.gg/repository/npm-releases/"
+    "registry": "https://registry.npmjs.org/"
   },
   "description": "A web replay viewer library for Minecraft using modl",
   "repository": {
