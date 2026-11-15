@@ -2333,7 +2333,7 @@ export class PrismarineRenderer {
     const embeddedPng = this.embeddedSkins.get(uuid) || this.embeddedSkins.get(cleanUuid);
     if (embeddedPng && embeddedPng.length > 0) {
       try {
-        const blob = new Blob([embeddedPng], { type: 'image/png' });
+        const blob = new Blob([new Uint8Array(embeddedPng)], { type: 'image/png' });
         const objectUrl = URL.createObjectURL(blob);
         const img = new Image();
         img.src = objectUrl;

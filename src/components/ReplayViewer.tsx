@@ -86,7 +86,7 @@ export const ReplayViewer: React.FC<ReplayViewerProps> = ({
   const [controlsVisible, setControlsVisible] = useState(true);
   const [showInfo, setShowInfo] = useState(false);
   const [expandedPlayer, setExpandedPlayer] = useState<string | null>(null);
-  const hideTimerRef = useRef<ReturnType<typeof setTimeout>>();
+  const hideTimerRef = useRef<ReturnType<typeof setTimeout>>(null);
 
   // Ref for playback state (avoid stale closures in keyboard handler)
   const playbackStateRef = useRef(playbackState);

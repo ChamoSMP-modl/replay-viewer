@@ -7,27 +7,31 @@
  * Usage: node scripts/generate-all-atlases.mjs
  */
 
-import { execFileSync } from 'child_process';
+import {execFileSync} from 'child_process';
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import {fileURLToPath} from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const VERSIONS = ['1.8.8', '1.12.2', '1.16.5', '1.19.4', '1.20.2', '1.21.1', '1.21.4', '1.21.11'];
-const DEFAULT_VERSION = '1.21.11';
+const VERSIONS = ['1.21.11', '26.1.2', '26.2', '26.3'];
+let DEFAULT_VERSION = '26.3';
 
 const scriptPath = path.join(__dirname, 'generate-atlas.mjs');
 
 for (const version of VERSIONS) {
-  console.log(`\n=== Generating atlas for ${version} ===\n`);
-  execFileSync('node', [scriptPath, version], { stdio: 'inherit' });
+    console.log(`\n=== Generating atlas for ${version} ===\n`);
+
+    execFileSync('node', [scriptPath, version], {stdio: 'inherit'});
 }
+
+console.log("\nDefault version: " + DEFAULT_VERSION)
+console.log("Versions: " + VERSIONS)
 
 // Write versions manifest
 const manifest = {
-  versions: VERSIONS,
-  default: DEFAULT_VERSION,
+    versions: VERSIONS,
+    default: DEFAULT_VERSION,
 };
 
 const manifestPath = path.resolve(__dirname, '../public/atlas/versions.json');
